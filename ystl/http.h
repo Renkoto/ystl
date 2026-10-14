@@ -1370,6 +1370,15 @@ public:
 #endif
   }
 
+  // true when a usable ca bundle was loaded via set_ca_file
+  bool has_ca_bundle () const {
+#if defined(YSTL_WITH_TLS)
+    return ca_loaded_;
+#else
+    return false;
+#endif
+  }
+
   void set_user_agent (StringRef ua) {
     user_agent_ = ua;
   }
